@@ -26,6 +26,7 @@ const Signup = () => {
         name,
         email,
         phone,
+        password,
         uid: user.uid,
       });
 
