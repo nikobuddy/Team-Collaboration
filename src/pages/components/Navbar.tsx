@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ drawerOpen, setDrawerOpen }) => {
       <div className="flex items-center gap-4">
         {/* Sidebar Toggle for mobile screens */}
         <MenuIcon
-          className="md:hidden text-white text-2xl cursor-pointer"
+          className="md:hidden text-white text-4xl cursor-pointer"
           onClick={() => setDrawerOpen(!drawerOpen)}
         />
         <a href="/" className="text-white text-lg font-semibold">My Dashboard</a>
