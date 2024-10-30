@@ -1,8 +1,9 @@
+import { Bell, Briefcase, Calendar, Clock, Home, Layers, Layout, ListChecks, Milestone, Users } from 'lucide-react';
+
+import { Link } from 'react-router-dom';
 // SidebarContent.tsx
 import { Menu } from 'antd';
-import { Bell, Briefcase, Calendar, Clock, Home, Layers, Layout, ListChecks, Milestone, Users } from 'lucide-react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 type SidebarContentProps = {
   expanded: boolean;
@@ -36,11 +37,11 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
       >
         <Menu.Item key="uiux" className="bg-[#1F2937] text-white hover:bg-gray-700">
           <Link to="/projects/uiux">
-            <Layout className="text-sm mr-2" /> 
+            <Layout className="text-sm"/> 
             UI/UX
           </Link>
         </Menu.Item>
-        <Menu.Item key="task" className="bg-[#1F2937] text-white hover:bg-gray-700">
+        <Menu.Item key="task" className="bg-[#1F2937] text-white hover:bg-gray-800">
           <Link to="/projects/task">
             <ListChecks className="text-sm mr-2" />
             Task

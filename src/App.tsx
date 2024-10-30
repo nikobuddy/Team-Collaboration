@@ -1,24 +1,33 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashboardLayout from "./pages/components/DashboardLayout"; // Import the DashboardLayout
+import Login from "./pages/auth/login";
+import Signup from "./pages/auth/singup";
+import DashboardLayout from "./pages/components/DashboardLayout";
 import ErrorPage from "./pages/error/error_page";
+import { AuthProvider } from "./pages/firebase/AuthContext";
+import ProtectedRoute from "./pages/firebase/ProtectedRoute";
 import HomePage from "./pages/home/page/home_page";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Wrap HomePage with DashboardLayout */}
-        <Route 
-          path="/" 
-          element={
-            <DashboardLayout>
-              <HomePage />
-            </DashboardLayout>
-          } 
-        />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route 
+            path="/" 
+            element={
+              <ProtectedRoute>
+                <DashboardLayout>
+                  <HomePage />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } 
+          />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 };
 
