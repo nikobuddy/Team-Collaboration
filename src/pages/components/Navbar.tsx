@@ -1,27 +1,50 @@
-import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { Avatar, Dropdown, Menu, Popconfirm } from 'antd';
+import { MenuIcon } from 'lucide-react';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar: React.FC = () => {
+type NavbarProps = {
+  drawerOpen: boolean;
+  setDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Navbar: React.FC<NavbarProps> = ({ drawerOpen, setDrawerOpen }) => {
+  const profileMenu = (
+    <Menu>
+      <Menu.Item key="profile">
+        <Link to="/user">Profile</Link>
+      </Menu.Item>
+      <Menu.Item key="logout">
+        <Popconfirm
+          title="Logout"
+          description="Are you sure to logout?"
+          okText="Yes"
+          cancelText="No"
+          onConfirm={() => console.log('Logout')}
+        >
+          <div>Logout</div>
+        </Popconfirm>
+      </Menu.Item>
+    </Menu>
+  );
+
   return (
-    <div className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-      <div className="flex items-center space-x-2">
-        {/* Logo and Brand Name */}
-        <img src="/path/to/logo.png" alt="Logo" className="h-8 w-8" />
-        <h1 className="text-xl font-semibold text-gray-800">Bike Builders</h1>
+    <header className="fixed top-0 left-0 w-full bg-cyan-600 shadow-lg flex items-center justify-between p-4 h-[80px] z-50">
+      <div className="flex items-center gap-4">
+        {/* Sidebar Toggle for mobile screens */}
+        <MenuIcon
+          className="md:hidden text-white text-2xl cursor-pointer"
+          onClick={() => setDrawerOpen(!drawerOpen)}
+        />
+        <a href="/" className="text-white text-lg font-semibold">My Dashboard</a>
       </div>
-      <div className="flex items-center space-x-4">
-        {/* Notification Bell */}
-        <button className="relative p-2 text-gray-600 hover:text-gray-800">
-          <BellIcon className="w-6 h-6" />
-          <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">3</span>
-        </button>
-        
-        {/* Profile Icon */}
-        <button className="text-gray-600 hover:text-gray-800">
-          <UserCircleIcon className="w-8 h-8" />
-        </button>
+
+      <div className="flex items-center gap-6">
+        <Dropdown overlay={profileMenu} placement="bottomRight" arrow>
+          <Avatar className="bg-blue-500">U</Avatar>
+        </Dropdown>
       </div>
-    </div>
+    </header>
   );
 };
 
