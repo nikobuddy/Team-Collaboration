@@ -1,11 +1,11 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/auth/login";
-import Signup from "./pages/auth/singup";
-import DashboardLayout from "./pages/components/DashboardLayout";
-import ErrorPage from "./pages/error/error_page";
-import { AuthProvider } from "./pages/firebase/AuthContext";
-import ProtectedRoute from "./pages/firebase/ProtectedRoute";
-import HomePage from "./pages/home/page/home_page";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './pages/auth/login';
+import Signup from './pages/auth/singup';
+import DashboardLayout from './pages/components/DashboardLayout';
+import ErrorPage from './pages/error/error_page';
+import { AuthProvider } from './pages/firebase/AuthContext';
+import ProtectedRoute from './pages/firebase/ProtectedRoute';
+import HomePage from './pages/home/page/home_page';
 
 const App = () => {
   return (

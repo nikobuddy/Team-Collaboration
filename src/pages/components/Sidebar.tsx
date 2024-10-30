@@ -1,4 +1,3 @@
-// Sidebar.tsx
 import { Avatar } from 'antd';
 import { ChevronFirst, ChevronLast } from 'lucide-react';
 import React from 'react';
@@ -7,9 +6,10 @@ import SidebarContent from './SidebarContent';
 type SidebarProps = {
   expanded: boolean;
   setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+  userName: string; // Add userName prop
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded }) => {
+const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded, userName }) => {
   return (
     <aside
       className={`h-screen bg-gray-800 text-white transition-all duration-300 ease-in-out mt-20 ${
@@ -19,8 +19,8 @@ const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded }) => {
       {/* Header with Avatar and Toggle */}
       <div className="flex items-center justify-between p-4 border-b border-gray-600">
         <div className="flex items-center">
-          <Avatar className="bg-blue-500">U</Avatar>
-          <span className={`ml-4 text-lg ${expanded ? 'block' : 'hidden'}`}>User Name</span>
+          <Avatar className="bg-blue-500">{userName.charAt(0)}</Avatar> {/* Display the first letter of the user's name */}
+          <span className={`ml-4 text-lg ${expanded ? 'block' : 'hidden'}`}>{userName}</span> {/* Display user's name */}
         </div>
         <button onClick={() => setExpanded(!expanded)}>
           {expanded ? <ChevronFirst /> : <ChevronLast />}
@@ -30,6 +30,13 @@ const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded }) => {
       {/* Sidebar Content */}
       <div className="flex-1 p-2">
         <SidebarContent expanded={expanded} />
+      </div>
+
+      {/* Logout button at the bottom */}
+      <div className="p-4 border-t border-gray-600">
+        <button className="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600">
+          Logout
+        </button>
       </div>
     </aside>
   );

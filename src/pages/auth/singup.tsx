@@ -1,6 +1,7 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'; // Import updateProfile
 import { doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase/firebase';
 
 const Signup = () => {
@@ -9,12 +10,16 @@ const Signup = () => {
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
+
+      // Update user's display name
+      await updateProfile(user, { displayName: name }); // Set the display name
 
       // Save additional user data to Firestore
       await setDoc(doc(db, "users", user.uid), {
@@ -24,7 +29,7 @@ const Signup = () => {
         uid: user.uid,
       });
 
-      alert('Signup successful');
+      navigate('/'); // Redirect to the home page
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
