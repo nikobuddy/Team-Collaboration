@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './pages/auth/login';
 import Signup from './pages/auth/singup';
 import DashboardLayout from './pages/components/DashboardLayout';
+import GitHubHistory from './pages/components/githubhistory';
 import ErrorPage from './pages/error/error_page';
 import { AuthProvider } from './pages/firebase/AuthContext';
 import ProtectedRoute from './pages/firebase/ProtectedRoute';
@@ -24,6 +25,11 @@ const App = () => {
               </ProtectedRoute>
             } 
           />
+          <Route 
+  path="github" 
+  element={<GitHubHistory username="nikobuddy" repo="Team-Collaboration" />} 
+/>
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
