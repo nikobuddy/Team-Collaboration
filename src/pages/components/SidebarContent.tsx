@@ -19,7 +19,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
     >
       {/* Dashboard */}
       <Menu.Item key="dashboard" icon={<Home className="text-lg" />}>
-        <Link to="/dashboard" className="flex items-center">
+        <Link to="/github" className="flex items-center">
           {expanded && <span className="ml-2">Dashboard</span>}
         </Link>
       </Menu.Item>
@@ -36,7 +36,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
         popupClassName="bg-transparent"
       >
         <Menu.Item key="uiux" className="bg-[#1F2937] text-white hover:bg-gray-700">
-          <Link to="/projects/uiux">
+          <Link to="/github">
             <Layout className="text-sm"/> 
             UI/UX
           </Link>
