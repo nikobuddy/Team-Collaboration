@@ -28,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded, userName }) =>
       </div>
 
       {/* Sidebar Content */}
-      <div className="flex-1 p-2">
+      <div className="flex-1 p-0">
         <SidebarContent expanded={expanded} />
       </div>
 
