@@ -24,7 +24,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         />
 
         {/* Main Content Area */}
-        <main className={`flex-1 p-6 overflow-y-auto transition-all duration-300 ${isSidebarExpanded ? 'mt-20' : 'mt-20'}`} style={{ height: 'calc(100vh - 80px)' }}>
+        <main className={`flex-1 overflow-y-auto transition-all duration-300 ${isSidebarExpanded ? 'mt-20' : 'mt-20'}`} style={{ height: 'calc(100vh - 80px)' }}>
           {children}
         </main>
       </div>
