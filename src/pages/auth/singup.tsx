@@ -1,113 +1,92 @@
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { auth, db } from '../firebase/firebase';
 
-const Signup = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+const SignUp = () => {
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  const handleSignup = async (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      await updateProfile(user, { displayName: name });
-
-      await setDoc(doc(db, "users", user.uid), {
-        name,
-        email,
-        phone,
-        password,
-        uid: user.uid,
-      });
-
-      navigate('/'); // Redirect to the home page
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
-    }
+    // Add sign-up logic here
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-indigo-100 to-purple-300 px-4">
-      <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full">
-        <h2 className="text-3xl font-bold text-center text-indigo-600 mb-8">Create an Account</h2>
-        <form onSubmit={handleSignup} className="space-y-5">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+    <div className="flex items-center justify-center min-h-screen bg-[#1d1e26]">
+      <div className="bg-[#292b38] p-8 rounded-lg shadow-lg max-w-md w-full space-y-6">
+        <h2 className="text-white text-2xl font-bold text-center">Sign Up</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="flex space-x-4">
             <input
               type="text"
-              id="name"
-              placeholder="Hey Buddy"
-              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name="firstName"
+              placeholder="First Name"
+              className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
+              value={form.firstName}
+              onChange={handleChange}
               required
             />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
-              type="email"
-              id="email"
-              placeholder="email@gmail.com"
-              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
+              value={form.lastName}
+              onChange={handleChange}
               required
             />
           </div>
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              placeholder="8380000905"
-              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Enter your password"
-              className="mt-1 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
+            value={form.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+          <label className="text-gray-400 flex items-center space-x-2">
+            <input type="checkbox" className="accent-[#ff5e84]" />
+            <span>I agree with <a href="#" className="text-[#ff5e84]">privacy</a> and <a href="#" className="text-[#ff5e84]">policy</a></span>
+          </label>
           <button
             type="submit"
-            className="w-full p-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition duration-200"
+            className="w-full py-3 bg-[#ff5e84] text-white font-semibold rounded-full hover:bg-[#ff6a92] transition duration-200"
           >
             Sign Up
           </button>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Already have an account?{' '}
-          <Link to="/login" className="text-indigo-600 font-semibold hover:underline">
-            Log in here
-          </Link>
-        </p>
+        <div className="text-center text-sm text-gray-400 mt-4">
+          Already have an account? <a href="/login" className="text-[#ff5e84]">Sign in</a>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;

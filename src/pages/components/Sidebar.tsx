@@ -12,7 +12,7 @@ type SidebarProps = {
 const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded, userName }) => {
   return (
     <aside
-      className={`h-screen bg-gray-800 text-white transition-all duration-300 ease-in-out mt-20 ${
+      className={`h-screen bg-[#292b38] text-white transition-all duration-300 ease-in-out mt-20 ${
         expanded ? 'w-64' : 'w-20'
       }`}
     >
@@ -33,7 +33,7 @@ const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded, userName }) =>
       </div>
 
       {/* Logout button at the bottom */}
-      <div className="p-4 border-t border-gray-600">
+      <div className="p-4 border-t border-[#292b38]">
         <button className="w-full bg-red-500 text-white p-2 rounded hover:bg-red-600">
           Logout
         </button>

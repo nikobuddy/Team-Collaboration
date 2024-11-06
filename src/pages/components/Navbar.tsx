@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ drawerOpen, setDrawerOpen }) => {
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-cyan-600 shadow-lg flex items-center justify-between p-4 h-[80px] z-50">
+    <header className="fixed top-0 left-0 w-full bg-[#292b38] shadow-lg flex items-center justify-between p-4 h-[80px] z-50">
       <div className="flex items-center gap-4">
         {/* Sidebar Toggle for mobile screens */}
         <MenuIcon
