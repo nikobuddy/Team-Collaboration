@@ -1,6 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import ForgotPassword from './pages/auth/forgetpass';
 import Login from './pages/auth/login';
+import ResetPassword from './pages/auth/ResetPassword';
 import Signup from './pages/auth/singup';
 import MessagePage from './pages/chat/MessagePage';
 import PrivateChatPage from './pages/chat/PrivateChatPage';
@@ -19,7 +21,11 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/pass" element={<ForgotPassword />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+
+          
           <Route element={<ProtectedDashboardLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/github" element={<GitHubHistory username="nikobuddy" repo="Team-Collaboration" />} />
