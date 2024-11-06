@@ -6,6 +6,7 @@ import { auth } from '../firebase/firebase';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ const Login = () => {
           <div className="relative">
             <input
               type="email"
-              placeholder="Username"
+              placeholder="Email Id"
               className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -40,21 +41,26 @@ const Login = () => {
           </div>
           <div className="relative">
             <input
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               placeholder="Password"
               className="w-full p-3 bg-transparent border border-[#ff5e84] rounded-full text-white placeholder-white focus:outline-none focus:ring-1 focus:ring-[#ff5e84]"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-            <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#ff5e84] cursor-pointer">Show</span>
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#ff5e84] cursor-pointer"
+            >
+              {showPassword ? 'Hide' : 'Show'}
+            </span>
           </div>
           <div className="flex items-center justify-between">
             <label className="text-gray-400 flex items-center space-x-2">
               <input type="checkbox" className="accent-[#ff5e84]" />
               <span>Remember me</span>
             </label>
-            <a href="#" className="text-[#ff5e84] text-sm">Forgot Password</a>
+            <a href="pass" className="text-[#ff5e84] text-sm">Forgot Password</a>
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <button
