@@ -37,7 +37,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="resource" className="bg-[#292b38] text-white hover:bg-gray-700">
-        <Link to="/" className="flex items-center">
+        <Link to="/teams" className="flex items-center">
           <Users className="text-sm mr-2" />
           {expanded && <span className="ml-2">Resource</span>}
         </Link>
@@ -64,7 +64,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="deadlines" className="bg-[#292b38] text-white hover:bg-gray-700">
-        <Link to="/" className="flex items-center">
+        <Link to="/create-team" className="flex items-center">
           <Clock className="text-sm mr-2" />
           {expanded && <span className="ml-2">Deadlines</span>}
         </Link>

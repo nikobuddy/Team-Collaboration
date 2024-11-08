@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+import CreateTeam from './pages/admin/CreateTeam';
 import ForgotPassword from './pages/auth/forgetpass';
 import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/ResetPassword';
@@ -14,6 +15,8 @@ import ProtectedDashboardLayout from './pages/components/ProtectedDashboardLayou
 import ErrorPage from './pages/error/error_page';
 import { AuthProvider } from './pages/firebase/AuthContext';
 import HomePage from './pages/home/page/home_page';
+import TeamDetails from './pages/teams/TeamDetails';
+import TeamsPage from './pages/teams/TeamsPage';
 
 const App = () => {
   return (
@@ -28,6 +31,11 @@ const App = () => {
           
           <Route element={<ProtectedDashboardLayout />}>
             <Route path="/" element={<HomePage />} />
+            
+            <Route path="/teams" element={<TeamsPage />} />
+        <Route path="/teams/:teamCode" element={<TeamDetails />} />
+        <Route path="/create-team" element={<CreateTeam />} />
+
             <Route path="/github" element={<GitHubHistory username="nikobuddy" repo="Team-Collaboration" />} />
             <Route path="/MainTeamSection" element={<MainTeamSection />} />
 

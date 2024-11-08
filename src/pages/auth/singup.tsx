@@ -15,14 +15,19 @@ const Signup = () => {
   });
   const [error, setError] = useState('');
   const [agree, setAgree] = useState(false);
+  const [role, setRole] = useState<'leader' | 'member' | null>(null); // Added state for role selection
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  const handleSignup = async (e) => {
+  const handleRoleChange = (selectedRole: 'leader' | 'member') => {
+    setRole(selectedRole); // Set the role when a button is clicked
+  };
+
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     const { firstName, lastName, email, phone, password, confirmPassword } = form;
 
@@ -39,12 +44,13 @@ const Signup = () => {
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
 
       // Save additional user data to Firestore
-      await setDoc(doc(db, "users", user.uid), {
+      await setDoc(doc(db, 'users', user.uid), {
         name: `${firstName} ${lastName}`,
         email,
         phone,
         password,
         uid: user.uid,
+        role: role, // Save the selected role
       });
 
       navigate('/'); // Redirect to the home page
@@ -117,6 +123,28 @@ const Signup = () => {
           />
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
+
+          {/* Role Selection Buttons */}
+          <div className="flex justify-center space-x-4 mt-4">
+            <button
+              type="button"
+              onClick={() => handleRoleChange('leader')}
+              className={`w-1/2 py-3 font-semibold rounded-full transition duration-200 ${
+                role === 'leader' ? 'bg-[#ff5e84] text-white' : 'bg-[#3a3f50] text-[#ff5e84]'
+              }`}
+            >
+              Leader
+            </button>
+            <button
+              type="button"
+              onClick={() => handleRoleChange('member')}
+              className={`w-1/2 py-3 font-semibold rounded-full transition duration-200 ${
+                role === 'member' ? 'bg-[#ff5e84] text-white' : 'bg-[#3a3f50] text-[#ff5e84]'
+              }`}
+            >
+              Member
+            </button>
+          </div>
 
           <label className="text-gray-400 flex items-center space-x-2">
             <input
