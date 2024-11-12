@@ -76,7 +76,7 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
         </Link>
       </Menu.Item>
       <Menu.Item key="milestones" className="bg-[#292b38] text-white hover:bg-gray-700">
-        <Link to="/" className="flex items-center">
+        <Link to="/team-dashboard" className="flex items-center">
           <Milestone className="text-sm mr-2" />
           {expanded && <span className="ml-2">Milestones</span>}
         </Link>

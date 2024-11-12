@@ -2,9 +2,9 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from '../firebase/firebase';
+import { auth, db } from '../../firebase/firebase';
 
-const Signup = () => {
+const ASignups = () => {
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -15,18 +15,21 @@ const Signup = () => {
   });
   const [error, setError] = useState('');
   const [agree, setAgree] = useState(false);
-  const [role, setRole] = useState<'leader' | 'member' | null>(null);
+  const [role, setRole] = useState<'leader' | 'member' | null>(null); // Role selection state
   const navigate = useNavigate();
 
+  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
+  // Handle role selection
   const handleRoleChange = (selectedRole: 'leader' | 'member') => {
     setRole(selectedRole);
   };
 
+  // Handle form submission
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     const { firstName, lastName, email, phone, password, confirmPassword } = form;
@@ -36,26 +39,29 @@ const Signup = () => {
       return;
     }
 
+    if (!role) {
+      setError('Please select a role');
+      return;
+    }
+
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
+      // Set display name in Firebase Auth
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
 
+      // Save user data in Firestore
       await setDoc(doc(db, 'users', user.uid), {
         name: `${firstName} ${lastName}`,
         email,
         phone,
         uid: user.uid,
-        role,
-        hasTeam: role === 'leader' ? false : undefined, // only leaders have hasTeam status
+        role, // Save role
       });
 
-      if (role === 'leader') {
-        navigate('/create-team');
-      } else {
-        navigate('/members');
-      }
+      // Redirect based on role
+      navigate(role === 'leader' ? '/create-team' : '/join-team');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
@@ -65,6 +71,7 @@ const Signup = () => {
     <div className="flex items-center justify-center min-h-screen bg-[#1d1e26]">
       <div className="bg-[#292b38] p-8 rounded-lg shadow-lg max-w-md w-full space-y-6">
         <h2 className="text-white text-2xl font-bold text-center">Sign Up</h2>
+
         <form onSubmit={handleSignup} className="space-y-4">
           <div className="flex space-x-4">
             <input
@@ -125,7 +132,7 @@ const Signup = () => {
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          {/* Role Selection */}
+          {/* Role Selection Buttons */}
           <div className="flex justify-center space-x-4 mt-4">
             <button
               type="button"
@@ -169,6 +176,7 @@ const Signup = () => {
             Sign Up
           </button>
         </form>
+
         <div className="text-center text-sm text-gray-400 mt-4">
           Already have an account? <a href="/login" className="text-[#ff5e84]">Sign in</a>
         </div>
@@ -177,4 +185,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default ASignups;

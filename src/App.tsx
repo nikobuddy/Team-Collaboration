@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import CreateTeam from './pages/admin/CreateTeam';
+import ASignups from './pages/AProject/auth/Signup';
 import ForgotPassword from './pages/auth/forgetpass';
 import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/ResetPassword';
@@ -15,6 +16,8 @@ import ProtectedDashboardLayout from './pages/components/ProtectedDashboardLayou
 import ErrorPage from './pages/error/error_page';
 import { AuthProvider } from './pages/firebase/AuthContext';
 import HomePage from './pages/home/page/home_page';
+import CreateTeams from './pages/teams/CreateTeam';
+import TeamDashboard from './pages/teams/TeamDashboard';
 import TeamDetails from './pages/teams/TeamDetails';
 import TeamsPage from './pages/teams/TeamsPage';
 
@@ -26,6 +29,14 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/pass" element={<ForgotPassword />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/create-team" element={<CreateTeams />} />
+          <Route path="/members" element={<Signup />} />
+
+
+          
+
+          
+          <Route path="/signups" element={<ASignups />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
           
@@ -44,6 +55,7 @@ const App = () => {
             <Route path="/message/:userId" element={<MessagePage />} />
             <Route path="/massage" element={<Chat />} />
             <Route path="/personaltext" element={<PrivateChatPage />} />
+            <Route path="/team-dashboard" element={<TeamDashboard />} />
 
             
             
