@@ -46,6 +46,7 @@ const Signup = () => {
         name: `${firstName} ${lastName}`,
         email,
         phone,
+        password,
         uid: user.uid,
         role,
         hasTeam: role === 'leader' ? false : undefined, // only leaders have hasTeam status

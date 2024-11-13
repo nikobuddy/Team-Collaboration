@@ -1,6 +1,6 @@
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
-import { auth, db } from '../firebase/firebase';
+import { auth, db } from '../../firebase/firebase';
 
 const Invitations = () => {
   const [invitations, setInvitations] = useState<any[]>([]);

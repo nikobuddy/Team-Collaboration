@@ -1,7 +1,7 @@
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from '../firebase/firebase';
+import { auth, db } from '../../firebase/firebase';
 
 const CreateTeam = () => {
   const [teamName, setTeamName] = useState('');
@@ -21,7 +21,7 @@ const CreateTeam = () => {
           navigate('/');
         }
       } else {
-        navigate('/login'); // Redirect if not logged in
+        navigate('/login');
       }
     };
     checkAccess();
@@ -50,16 +50,28 @@ const CreateTeam = () => {
     try {
       const user = auth.currentUser;
       if (user) {
+        // Create team with pending invitations for members
         await setDoc(doc(db, 'teams', teamName), {
           teamName,
           githubToken,
-          members: memberEmails,
           leader: user.uid,
+          members: [],
+          pendingInvitations: memberEmails,
         });
 
-        await setDoc(doc(db, 'users', user.uid), {
+        // Update user as team created
+        await updateDoc(doc(db, 'users', user.uid), {
           teamCreated: true,
-        }, { merge: true });
+        });
+
+        // Create invitations for each member
+        memberEmails.forEach(async (email) => {
+          await setDoc(doc(db, 'invitations', `${teamName}_${email}`), {
+            teamId: teamName,
+            memberEmail: email,
+            status: 'pending',
+          });
+        });
 
         navigate('/team-dashboard');
       }

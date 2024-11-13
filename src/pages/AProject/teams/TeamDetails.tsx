@@ -1,7 +1,7 @@
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { db } from '../firebase/firebase'; // Firebase setup
+import { db } from '../../firebase/firebase'; // Firebase setup
 
 interface TeamMember {
   email: string;

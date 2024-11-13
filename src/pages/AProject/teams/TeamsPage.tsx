@@ -1,7 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db } from '../firebase/firebase'; // Firestore setup
+import { db } from '../../firebase/firebase'; // Firestore setup
 
 interface Team {
   teamName: string;
