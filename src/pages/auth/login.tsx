@@ -15,13 +15,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // Check if admin login
+      // Admin login check
       if (email === 'admin@gmail.com' && password === 'admin') {
-        navigate('/admin-dashboard'); // Navigate to admin dashboard
+        // If admin credentials are correct, navigate to admin dashboard
+        navigate('/admin-dashboard');
         return;
       }
 
-      // Regular user login
+      // Regular user login using Firebase
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
@@ -40,6 +41,7 @@ const Login = () => {
         setError('User data not found.');
       }
     } catch (err: unknown) {
+      // Handle errors (e.g., invalid credentials or network issues)
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };

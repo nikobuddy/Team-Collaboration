@@ -3,14 +3,16 @@ import { Outlet } from 'react-router-dom';
 import ProtectedRoute from '../../firebase/ProtectedRoute';
 import DashboardLayout from './AdminDashboardLayout';
 
-const adminProtectedDashboardLayout = () => {
+const AdminProtectedDashboardLayout = () => {
   return (
     <ProtectedRoute>
       <DashboardLayout>
+        <div className='p-5'>
         <Outlet />
+        </div>
       </DashboardLayout>
     </ProtectedRoute>
   );
 };
 
-export default adminProtectedDashboardLayout;
+export default AdminProtectedDashboardLayout;
