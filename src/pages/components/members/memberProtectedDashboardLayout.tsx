@@ -1,9 +1,9 @@
 // src/pages/components/ProtectedDashboardLayout.js
 import { Outlet } from 'react-router-dom';
-import ProtectedRoute from '../firebase/ProtectedRoute';
-import DashboardLayout from './DashboardLayout';
+import ProtectedRoute from '../../firebase/ProtectedRoute';
+import DashboardLayout from './memberDashboardLayout';
 
-const ProtectedDashboardLayout = () => {
+const MemberProtectedDashboardLayout = () => {
   return (
     <ProtectedRoute>
       <DashboardLayout>
@@ -13,4 +13,4 @@ const ProtectedDashboardLayout = () => {
   );
 };
 
-export default ProtectedDashboardLayout;
+export default MemberProtectedDashboardLayout;

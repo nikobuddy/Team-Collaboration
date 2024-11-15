@@ -1,13 +1,13 @@
 import React, { ReactNode, useState } from 'react';
-import { useAuth } from '../firebase/AuthContext';
-import Navbar from './Navbar';
-import Sidebar from './Sidebar';
+import { useAuth } from '../../firebase/AuthContext';
+import Navbar from './AdminNavbar';
+import Sidebar from './AdminSidebar';
 
-interface DashboardLayoutProps {
+interface AdminDashboardLayoutProps {
   children: ReactNode;
 }
 
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+const AdminDashboardLayout: React.FC<AdminDashboardLayoutProps> = ({ children }) => {
   const { currentUser } = useAuth();
   const [isSidebarExpanded, setIsSidebarExpanded] = useState(true);
   const userName = currentUser ? currentUser.displayName || 'User' : 'User';
@@ -32,4 +32,4 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   );
 };
 
-export default DashboardLayout;
+export default AdminDashboardLayout;

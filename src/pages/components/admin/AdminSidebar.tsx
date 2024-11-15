@@ -1,15 +1,15 @@
 import { Avatar } from 'antd';
 import { ChevronFirst, ChevronLast } from 'lucide-react';
 import React from 'react';
-import SidebarContent from './SidebarContent';
+import SidebarContent from './AdminSidebarContent';
 
-type SidebarProps = {
+type AdminSidebarProps = {
   expanded: boolean;
   setExpanded: React.Dispatch<React.SetStateAction<boolean>>;
   userName: string; // Add userName prop
 };
 
-const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded, userName }) => {
+const AdminSidebarProps: React.FC<AdminSidebarProps> = ({ expanded, setExpanded, userName }) => {
   return (
     <aside
       className={`h-screen bg-[#292b38] text-white transition-all duration-300 ease-in-out mt-20 ${
@@ -42,4 +42,4 @@ const Sidebar: React.FC<SidebarProps> = ({ expanded, setExpanded, userName }) =>
   );
 };
 
-export default Sidebar;
+export default AdminSidebarProps;

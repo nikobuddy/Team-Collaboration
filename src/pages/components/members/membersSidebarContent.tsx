@@ -4,11 +4,11 @@ import { Menu } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-type SidebarContentProps = {
+type membersSidebarContentProps = {
   expanded: boolean;
 };
 
-const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
+const membersSidebarContent: React.FC<membersSidebarContentProps> = ({ expanded }) => {
   return (
     <Menu
       mode="inline"
@@ -85,4 +85,4 @@ const SidebarContent: React.FC<SidebarContentProps> = ({ expanded }) => {
   );
 };
 
-export default SidebarContent;
+export default membersSidebarContent;

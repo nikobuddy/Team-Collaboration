@@ -3,12 +3,12 @@ import { MenuIcon } from 'lucide-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-type NavbarProps = {
+type AdminNavbarProps = {
   drawerOpen: boolean;
   setDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Navbar: React.FC<NavbarProps> = ({ drawerOpen, setDrawerOpen }) => {
+const AdminNavbar: React.FC<AdminNavbarProps> = ({ drawerOpen, setDrawerOpen }) => {
   const profileMenu = (
     <Menu>
       <Menu.Item key="profile">
@@ -48,4 +48,4 @@ const Navbar: React.FC<NavbarProps> = ({ drawerOpen, setDrawerOpen }) => {
   );
 };
 
-export default Navbar;
+export default AdminNavbar;

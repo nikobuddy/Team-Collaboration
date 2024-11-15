@@ -13,18 +13,28 @@ const Login = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
+      // Check if admin login
+      if (email === 'admin@gmail.com' && password === 'admin') {
+        navigate('/admin-dashboard'); // Navigate to admin dashboard
+        return;
+      }
+
+      // Regular user login
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      
+
       // Fetch user data from Firestore
       const userDoc = await getDoc(doc(db, 'users', user.uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
+
+        // Navigate based on user role
         if (userData.role === 'leader') {
           navigate(userData.hasTeam ? '/team' : '/create-team');
         } else {
-          navigate('/members');
+          navigate('/member-dashboard');
         }
       } else {
         setError('User data not found.');
