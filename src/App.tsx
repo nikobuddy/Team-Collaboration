@@ -25,6 +25,17 @@ const App = () => {
           <Route element={<MemberProtectedDashboardLayout />}>
             <Route path="/member-dashboard" element={<MDashboard />} />
             <Route path="/" element={<MDashboard />} />
+            <Route path="/dashboard" element={<MDashboard />} />
+            <Route path="/projects" element={<MDashboard />} />
+            <Route path="/tasks" element={<MDashboard />} />
+            <Route path="/resources" element={<MDashboard />} />
+            <Route path="/versions" element={<MDashboard />} />
+            <Route path="/calendar" element={<MDashboard />} />
+            <Route path="/deadlines" element={<MDashboard />} />
+            <Route path="/meetings" element={<MDashboard />} />
+            <Route path="/milestones" element={<MDashboard />} />
+
+
           </Route>
 
           <Route element={<AdminProtectedDashboardLayout />}>
