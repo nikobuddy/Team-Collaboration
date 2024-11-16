@@ -7,7 +7,7 @@ const AdminProtectedDashboardLayout = () => {
   return (
     <ProtectedRoute>
       <DashboardLayout>
-        <div className='p-5'>
+        <div className='p-5 bg-[#292b38]'>
         <Outlet />
         </div>
       </DashboardLayout>

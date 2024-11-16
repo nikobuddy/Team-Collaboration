@@ -7,7 +7,9 @@ const MemberProtectedDashboardLayout = () => {
   return (
     <ProtectedRoute>
       <DashboardLayout>
+        <div className='bg-[#292b38] p-2'>
         <Outlet />
+        </div>
       </DashboardLayout>
     </ProtectedRoute>
   );

@@ -37,6 +37,10 @@ const Signup = () => {
 
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
 
+      // Get current date and time
+      const signupDate = new Date().toISOString();  // ISO string format for consistency
+
+      // Save user data with signup date
       await setDoc(doc(db, 'users', user.uid), {
         name: `${firstName} ${lastName}`,
         email,
@@ -44,6 +48,7 @@ const Signup = () => {
         password,
         uid: user.uid,
         role: 'member', // Directly set role as 'member'
+        signupDate, // Add signup date field
       });
 
       navigate('/members');
