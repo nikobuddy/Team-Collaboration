@@ -6,6 +6,7 @@ import Signup from './pages/auth/singup';
 import AdminProtectedDashboardLayout from './pages/components/admin/AdminProtectedDashboardLayout';
 import AdminCalendar from './pages/components/admin/Pages/Acalendar';
 import AdminDashboard from './pages/components/admin/Pages/AdminDashboard';
+import AdminScheduleMeeting from './pages/components/admin/Pages/Ameetings';
 import ProjectAdminPage from './pages/components/admin/Pages/Aprojects';
 import AdminResources from './pages/components/admin/Pages/Aresources';
 import AdminTasks from './pages/components/admin/Pages/Atasks';
@@ -13,6 +14,7 @@ import TaskDahboard from './pages/components/admin/Pages/TaskDahboard';
 import MemberProtectedDashboardLayout from './pages/components/members/memberProtectedDashboardLayout';
 import UserCalendar from './pages/components/members/Pages/calendar';
 import MDashboard from './pages/components/members/Pages/Dashboard';
+import UserJoinMeeting from './pages/components/members/Pages/meetings';
 import Projects from './pages/components/members/Pages/projects';
 import RepositoryDetails from './pages/components/members/Pages/RepositoryDetails';
 import UserResources from './pages/components/members/Pages/resources';
@@ -43,7 +45,7 @@ const App = () => {
             <Route path="/versions" element={<MDashboard />} />
             <Route path="/calendar" element={<UserCalendar />} />
             <Route path="/deadlines" element={<MDashboard />} />
-            <Route path="/meetings" element={<MDashboard />} />
+            <Route path="/meetings" element={<UserJoinMeeting />} />
             <Route path="/milestones" element={<MDashboard />} />
 
 
@@ -62,7 +64,7 @@ const App = () => {
             <Route path="/admin/versions" element={<AdminDashboard />} />
             <Route path="/admin/notifications" element={<AdminDashboard />} />
             <Route path="/admin/calendar" element={<AdminCalendar />} />
-            <Route path="/admin/meetings" element={<AdminDashboard />} />
+            <Route path="/admin/meetings" element={<AdminScheduleMeeting />} />
             <Route path="/admin/milestones" element={<AdminDashboard />} />
             <Route path="/admin/users" element={<TaskDahboard />} />
 
