@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { auth, db } from "../../../firebase/firebase";
 
-// Define Task and User types
 interface Task {
   id: string;
   name: string;
@@ -20,24 +19,21 @@ interface User {
 }
 
 const TaskPage = ({ isAdmin }: { isAdmin: boolean }) => {
-  const [tasks, setTasks] = useState<Task[]>([]); // Specify Task type
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState({
     name: "",
     description: "",
     deadline: "",
-    assignedTo: "all", // 'all' or specific user
+    assignedTo: "all",
   });
-  const [users, setUsers] = useState<User[]>([]); // Specify User type
+  const [users, setUsers] = useState<User[]>([]);
   const [currentUserId, setCurrentUserId] = useState("");
 
   useEffect(() => {
     const fetchTasks = async () => {
-      let taskQuery;
-      if (isAdmin) {
-        taskQuery = query(collection(db, "tasks"));
-      } else {
-        taskQuery = query(collection(db, "tasks"), where("assignedTo", "in", ["all", currentUserId]));
-      }
+      const taskQuery = isAdmin
+        ? query(collection(db, "tasks"))
+        : query(collection(db, "tasks"), where("assignedTo", "in", ["all", currentUserId]));
       const taskDocs = await getDocs(taskQuery);
       setTasks(taskDocs.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Task)));
     };
@@ -120,18 +116,16 @@ const TaskPage = ({ isAdmin }: { isAdmin: boolean }) => {
       )}
 
       <h2 className="text-2xl font-bold mb-4 text-[#ff5e84]">{isAdmin ? "All Tasks" : "Your Tasks"}</h2>
-
-      {/* Task Table */}
       <div className="overflow-x-auto bg-[#292b38] p-6 rounded-lg shadow-md">
         <table className="min-w-full text-sm text-left text-white">
           <thead className="text-xs uppercase bg-[#3d3f4b]">
             <tr>
-              <th scope="col" className="px-6 py-3">Task Name</th>
-              <th scope="col" className="px-6 py-3">Description</th>
-              <th scope="col" className="px-6 py-3">Deadline</th>
-              <th scope="col" className="px-6 py-3">Assigned To</th>
-              <th scope="col" className="px-6 py-3">Progress</th>
-              <th scope="col" className="px-6 py-3">Action</th>
+              <th className="px-6 py-3">Task Name</th>
+              <th className="px-6 py-3">Description</th>
+              <th className="px-6 py-3">Deadline</th>
+              <th className="px-6 py-3">Assigned To</th>
+              <th className="px-6 py-3">Progress</th>
+              <th className="px-6 py-3">Action</th>
             </tr>
           </thead>
           <tbody>

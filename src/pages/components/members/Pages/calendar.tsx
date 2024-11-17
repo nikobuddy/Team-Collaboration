@@ -4,34 +4,57 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { db } from '../../../firebase/firebase'; // Adjust path as needed
 
+interface Task {
+  id: string;
+  date: string;
+  task: string;
+}
+
 const UserCalendar: React.FC = () => {
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [dailyTasks, setDailyTasks] = useState<any[]>([]);
+  const [dailyTasks, setDailyTasks] = useState<Task[]>([]);
 
   useEffect(() => {
-    // Fetch tasks from the "calendertask" collection in Firebase to display
     const fetchTasks = async () => {
       const taskCollection = collection(db, 'calendertask');
       const taskSnapshot = await getDocs(taskCollection);
-      const taskList = taskSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      const taskList: Task[] = taskSnapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          date: data.date || '',
+          task: data.task || '',
+        };
+      });
       setTasks(taskList);
     };
     fetchTasks();
   }, []);
 
-  const handleDateSelect = (value: Date) => {
-    setSelectedDate(value);
-    const filteredTasks = tasks.filter(
-      (task) => new Date(task.date).toDateString() === value.toDateString()
-    );
-    setDailyTasks(filteredTasks);
+  const handleDateSelect = (value: Date | [Date | null, Date | null] | null) => {
+    if (value && !(value instanceof Array)) {
+      setSelectedDate(value);
+      const filteredTasks = tasks.filter(
+        (task) => new Date(task.date).toDateString() === value.toDateString()
+      );
+      setDailyTasks(filteredTasks);
+    } else {
+      setSelectedDate(null);
+      setDailyTasks([]);
+    }
   };
 
-  // Generate random colors for tasks
   const generateColor = (index: number) => {
     const colors = ['#ff5e84', '#4caf50', '#ffc107', '#3b82f6', '#e91e63', '#673ab7'];
     return colors[index % colors.length];
+  };
+
+  const getTileStyle = (date: Date) => {
+    const taskIndex = tasks.findIndex(
+      (task) => new Date(task.date).toDateString() === date.toDateString()
+    );
+    return taskIndex !== -1 ? { backgroundColor: generateColor(taskIndex), borderRadius: '8px' } : {};
   };
 
   return (
@@ -44,11 +67,14 @@ const UserCalendar: React.FC = () => {
           onChange={handleDateSelect}
           value={selectedDate}
           className="bg-[#1d1e26] text-white rounded-md"
-          tileClassName={({ date }) => {
-            const hasTask = tasks.some(
-              (task) => new Date(task.date).toDateString() === date.toDateString()
-            );
-            return hasTask ? 'bg-[#ff5e84] rounded-md text-white' : '';
+          tileClassName={({ date }) =>
+            tasks.some((task) => new Date(task.date).toDateString() === date.toDateString())
+              ? 'has-task'
+              : ''
+          }
+          tileContent={({ date }) => {
+            const style = getTileStyle(date);
+            return style.backgroundColor ? <div style={style}>&nbsp;</div> : null;
           }}
           calendarType="iso8601"
         />
@@ -56,11 +82,13 @@ const UserCalendar: React.FC = () => {
 
       {/* Daily Task Overview */}
       <div className="bg-[#292b38] p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4">Tasks for {selectedDate ? selectedDate.toDateString() : 'Selected Date'}</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          Tasks for {selectedDate ? selectedDate.toDateString() : 'Selected Date'}
+        </h2>
         {dailyTasks.length > 0 ? (
           dailyTasks.map((task, index) => (
             <div
-              key={index}
+              key={task.id}
               className="p-4 mb-2 rounded-md"
               style={{ backgroundColor: generateColor(index) }}
             >

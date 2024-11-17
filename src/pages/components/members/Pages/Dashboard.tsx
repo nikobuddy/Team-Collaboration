@@ -114,7 +114,7 @@ const MDashboard: React.FC = () => {
         </section>
       </div>
 
-      {/* Key Metrics Section */}
+      {/* Key Metrics Section 
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div className="bg-[#292b38] p-6 rounded-lg shadow-lg text-center">
           <h3 className="text-xl font-bold mb-2">Total Developers</h3>
@@ -133,6 +133,7 @@ const MDashboard: React.FC = () => {
           <p className="text-3xl font-semibold text-[#42a5f5]">200</p>
         </div>
       </section>
+      
 
       {/* Weekly Task Completion (Line Chart) */}
       <section className="bg-[#292b38] p-6 rounded-lg shadow-lg mb-8">
