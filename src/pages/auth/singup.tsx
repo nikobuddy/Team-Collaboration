@@ -51,7 +51,7 @@ const Signup = () => {
         signupDate, // Add signup date field
       });
 
-      navigate('/members');
+      navigate('/member-dashboard');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
