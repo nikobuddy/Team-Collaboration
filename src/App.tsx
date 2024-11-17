@@ -20,6 +20,7 @@ import UserResources from './pages/components/members/Pages/resources';
 import TaskPage from './pages/components/members/Pages/tasks';
 import ErrorPage from './pages/error/error_page';
 import { AuthProvider, useAuth } from './pages/firebase/AuthContext';
+import HomePage from './pages/home/page/home_page';
 
 const App = () => {
   const { isAdmin } = useAuth(); // Dynamically determine if user is an admin
@@ -31,6 +32,7 @@ const App = () => {
           {/* Authentication Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/pass" element={<ForgotPassword />} />
+          <Route path="/wadge" element={<HomePage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
@@ -45,6 +47,8 @@ const App = () => {
             <Route path="/resources" element={<UserResources />} />
             <Route path="/calendar" element={<UserCalendar />} />
             <Route path="/meetings" element={<UserJoinMeeting />} />
+
+            
           </Route>
 
           {/* Admin Dashboard */}
