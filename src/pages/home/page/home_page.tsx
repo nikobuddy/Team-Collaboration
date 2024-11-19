@@ -1,3 +1,5 @@
+import React from 'react';
+import React, { useState } from 'react';
 const HomePage = () => {
   return <div className="p-10 bg-[#FF0000FF]">
     <h1 className="text-2xl font-bold">Welcome to Bike Builders!</h1>
@@ -5,7 +7,7 @@ const HomePage = () => {
     <img src="C:\Users\Harshada jadhav\Desktop" alt="Team" />
     <p className="mt-2">This is your dashboard.</p>  
   </div>;
-  import React, { useState } from 'react';
+  
 
   const LoginPage = () => {
     // State for the form inputs
@@ -99,6 +101,52 @@ const HomePage = () => {
       </div>
     );
   };
+  
+
+const ButtonVariants = () => {
+  const handlePrimaryClick = () => {
+    alert('Primary Button Clicked');
+  };
+  
+  const handleSecondaryClick = () => {
+    alert('Secondary Button Clicked');
+  };
+  
+  const handleDangerClick = () => {
+    alert('Danger Button Clicked');
+  };
+
+  return (
+    <div className="space-x-4">
+      {/* Primary Button */}
+      <button
+        onClick={handlePrimaryClick}
+        className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      >
+        Primary Button
+      </button>
+
+      {/* Secondary Button */}
+      <button
+        onClick={handleSecondaryClick}
+        className="px-6 py-3 bg-gray-500 text-white rounded hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300"
+      >
+        Secondary Button
+      </button>
+
+      {/* Danger Button */}
+      <button
+        onClick={handleDangerClick}
+        className="px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
+      >
+        Danger Button
+      </button>
+    </div>
+  );
+};
+
+export default ButtonVariants;
+
   
   export default LoginPage;
   
