@@ -8,31 +8,18 @@ const HomePage = () => {
   import React, { useState } from 'react';
 
 const LoginPage = () => {
-  // State for the form inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // State for error message
   const [error, setError] = useState('');
-
-  // Handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the page from reloading on form submit
-
-    // Basic validation check
+    e.preventDefault();
     if (!email || !password) {
       setError('Please enter both email and password.');
       return;
     }
-
-    // Reset error message
     setError('');
-
-    // Here you can add login logic (API call, etc.)
     console.log('Email:', email);
     console.log('Password:', password);
-
-    // Example: Simulating a successful login
     alert('Login successful!');
   };
 
@@ -99,6 +86,14 @@ const LoginPage = () => {
     </div>
   );
 };
+
+{
+  "developer": {
+    "name": "Photo",
+    "photo_url": "C:\Users\Harshada jadhav\Desktop"
+  }
+}
+
 
 export default LoginPage;
 
