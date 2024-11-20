@@ -23,6 +23,7 @@
     "chart.js": "^4.4.6",
     "date-fns": "^4.1.0",
     "firebase": "^11.0.1",
+    "framer-motion": "^11.11.17",
     "lucide-react": "^0.454.0",
     "nodemailer": "^6.9.16",
     "papaparse": "^5.4.1",

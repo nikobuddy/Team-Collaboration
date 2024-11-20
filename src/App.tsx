@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AuthProvider, useAuth } from './pages/firebase/AuthContext';
+
 import ForgotPassword from './pages/auth/forgetpass';
 import Login from './pages/auth/login';
 import ResetPassword from './pages/auth/ResetPassword';
@@ -19,7 +21,6 @@ import RepositoryDetails from './pages/components/members/Pages/RepositoryDetail
 import UserResources from './pages/components/members/Pages/resources';
 import TaskPage from './pages/components/members/Pages/tasks';
 import ErrorPage from './pages/error/error_page';
-import { AuthProvider, useAuth } from './pages/firebase/AuthContext';
 import HomePage from './pages/home/page/home_page';
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/pass" element={<ForgotPassword />} />
           <Route path="/wadge" element={<HomePage />} />
+          
           <Route path="/signup" element={<Signup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
 
