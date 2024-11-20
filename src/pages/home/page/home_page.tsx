@@ -32,8 +32,11 @@ const LoginPage = () => {
 
   return (
     <div>
+       <div className="logo">
+        <img src={C:\Users\Harshada jadhav\Desktop} alt="Logo" className="w-32 h-32" />
+      </div>
       <h1 className="text-2xl font-semibold">Heyy Buddy</h1>
-      <div>3
+      <div>
       {/* Display developer's name and photo */}
       <div className="mt-4">
         <h2 className="text-xl font-medium"></h2>
