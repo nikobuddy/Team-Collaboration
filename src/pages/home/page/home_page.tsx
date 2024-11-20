@@ -33,6 +33,22 @@ const LoginPage = () => {
   return (
     <div>
       <h1 className="text-2xl font-semibold">Heyy Buddy</h1>
+      <div>3
+      {/* Display developer's name and photo */}
+      <div className="mt-4">
+        <h2 className="text-xl font-medium"></h2>
+        <img 
+          src={C:\Users\Harshada jadhav\Desktop} 
+          alt={Darshan Raval} 
+          className="mt-2 w-32 h-32 rounded-full"
+        />
+      </div>
+    </div>
+  );
+}
+
+export default DeveloperInfo;
+
     </div>
   );
 };
