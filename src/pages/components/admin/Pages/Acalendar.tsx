@@ -10,19 +10,23 @@ const AdminCalendar: React.FC = () => {
   const [tasks, setTasks] = useState<any[]>([]);
 
   useEffect(() => {
-    // Fetch tasks from the "calendertask" collection in Firebase to display
     const fetchTasks = async () => {
-      const taskCollection = collection(db, 'calendertask');
-      const taskSnapshot = await getDocs(taskCollection);
-      const taskList = taskSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setTasks(taskList);
+      try {
+        const taskCollection = collection(db, 'calendertask');
+        const taskSnapshot = await getDocs(taskCollection);
+        const taskList = taskSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setTasks(taskList);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+        alert('Failed to fetch tasks.');
+      }
     };
     fetchTasks();
   }, []);
 
-  const handleDateChange = (value: Date | Date[]) => {
-    if (Array.isArray(value)) {
-      setSelectedDateRange(value as [Date, Date]);
+  const handleDateChange = (value: Date | [Date | null, Date | null] | null) => {
+    if (Array.isArray(value) && value[0] && value[1]) {
+      setSelectedDateRange([value[0], value[1]]);
     } else {
       setSelectedDateRange(null);
     }
@@ -34,7 +38,7 @@ const AdminCalendar: React.FC = () => {
       try {
         let currentDate = new Date(startDate);
         while (currentDate <= endDate) {
-          await setDoc(doc(db, 'calendertask', currentDate.toISOString()), {
+          await setDoc(doc(db, 'calendertask', currentDate.toISOString().replace(/:/g, '-')), {
             date: currentDate.toISOString(),
             task: taskDescription,
             assignedTo: 'UserX', // Replace with actual user info if needed
@@ -85,6 +89,22 @@ const AdminCalendar: React.FC = () => {
             Add Task
           </button>
         </div>
+      </div>
+
+      {/* Display Tasks */}
+      <div className="bg-[#292b38] p-6 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4">Tasks</h2>
+        {tasks.length > 0 ? (
+          <ul>
+            {tasks.map((task) => (
+              <li key={task.id} className="mb-2">
+                {task.date}: {task.task}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No tasks available.</p>
+        )}
       </div>
     </div>
   );
