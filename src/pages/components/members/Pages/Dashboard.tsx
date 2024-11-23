@@ -40,19 +40,17 @@ const MDashboard: React.FC = () => {
   };
 
   const taskData = [
-    { title: 'User A - Task 1', status: 'Ongoing' },
-    { title: 'User B - Task 2', status: 'Completed' },
-    { title: 'User C - Task 3', status: 'Ongoing' },
-    { title: 'User D - Task 4', status: 'Completed' },
-    { title: 'User E - Task 5', status: 'Upcoming' },
+    { title: 'Gayatri Vadge - Design and implement the Landing Page', status: 'Ongoing' },
+    { title: 'Rushikesh Landge - Design and deploy a User Authentication API ', status: 'Completed' },
+    { title: 'Dhanashri Sonawane - Set up the Firebase Firestore Database structure', status: 'Ongoing' },
+    { title: 'Nisarga Lokhande - Test the frontend-backend integration for the User Dashboard ', status: 'Completed' },
   ];
 
   const recentRepos = [
-    { name: 'Repo 1', lastUpdated: '2024-11-15' },
-    { name: 'Repo 2', lastUpdated: '2024-11-10' },
-    { name: 'Repo 3', lastUpdated: '2024-11-05' },
-    { name: 'Repo 4', lastUpdated: '2024-11-02' },
-    { name: 'Repo 5', lastUpdated: '2024-10-28' },
+    { name: 'Team Collabration', lastUpdated: '2024-11-23' },
+    { name: 'Gameing App', lastUpdated: '2024-11-22' },
+    { name: 'shoppers stop', lastUpdated: '2024-11-22' },
+    { name: 'Study App', lastUpdated: '2024-11-22' },
   ];
 
   const lineChartData = {
