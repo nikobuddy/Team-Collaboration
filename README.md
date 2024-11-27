@@ -28,6 +28,27 @@ npm start
 The app will be accessible at [http://localhost:3000](http://localhost:3000).  
 
 ---
+## 🌐 URL Paths
+
+### User Interface  
+- **Dashboard**: [http://localhost:3000/dashboard](http://localhost:3000/dashboard)  
+- **Projects**: [http://localhost:3000/projects](http://localhost:3000/projects)  
+- **Tasks**: [http://localhost:3000/tasks](http://localhost:3000/tasks)  
+- **Resources**: [http://localhost:3000/resources](http://localhost:3000/resources)  
+- **Calendar**: [http://localhost:3000/calendar](http://localhost:3000/calendar)  
+- **Meetings**: [http://localhost:3000/meetings](http://localhost:3000/meetings)  
+
+### Admin Access  
+Admin can manage all the sections through the following path:  
+- **Base Admin URL**: [http://localhost:3000/admin](http://localhost:3000/admin)  
+  Replace `path-here` with the respective section:  
+  - Dashboard: [http://localhost:3000/admin/dashboard](http://localhost:3000/admin/dashboard)  
+  - Projects: [http://localhost:3000/admin/projects](http://localhost:3000/admin/projects)  
+  - Tasks: [http://localhost:3000/admin/tasks](http://localhost:3000/admin/tasks)  
+  - Resources: [http://localhost:3000/admin/resources](http://localhost:3000/admin/resources)  
+  - Calendar: [http://localhost:3000/admin/calendar](http://localhost:3000/admin/calendar)  
+  - Meetings: [http://localhost:3000/admin/meetings](http://localhost:3000/admin/meetings)  
+
 ---
 
 ## 🚀 Features  
@@ -58,17 +79,53 @@ The app will be accessible at [http://localhost:3000](http://localhost:3000).
 
 ## 📂 Project Structure  
 ```plaintext  
-Team-Collaboration/  
-├── public/        # Public assets  
-├── src/  
-│   ├── components/    # Reusable UI components  
-│   ├── pages/         # Main pages (Dashboard, Tasks, Projects, etc.)  
-│   ├── services/      # API and Firebase service integrations  
-│   ├── styles/        # TailwindCSS configurations  
-│   └── utils/         # Helper functions  
-├── package.json  
-└── README.md  
+TEAM-COLLABORATION/
+├── .git/                     # Git repository folder
+├── dist/                     # Build files
+├── node_modules/             # Dependencies
+├── public/                   # Public assets
+├── src/                      # Source files
+│   ├── assets/               # Static assets
+│   ├── pages/                # Pages for the application
+│   │   ├── auth/             # Authentication-related pages
+│   ├── components/           # Reusable components
+│   │   ├── admin/            # Admin-related components
+│   │   │   ├── Pages/        # Admin-specific pages
+│   │   │   ├── AdminDashboardLayout.tsx
+│   │   │   ├── AdminNavbar.tsx
+│   │   │   ├── AdminProtectedDashboardLayout.tsx
+│   │   │   ├── AdminSidebar.tsx
+│   │   │   ├── AdminSidebarContent.tsx
+│   │   ├── members/          # Member-related components
+│   │   │   ├── Pages/        # Member-specific pages
+│   │   │   ├── memberDashboardLayout.tsx
+│   │   │   ├── memberNavbar.tsx
+│   │   │   ├── memberProtectedDashboardLayout.tsx
+│   │   │   ├── memberSidebar.tsx
+│   │   │   ├── membersSidebarContent.tsx
+│   ├── error/                # Error pages
+│   │   ├── error_page.tsx
+│   ├── firebase/             # Firebase integration
+│   ├── github/               # GitHub-related utilities
+│   ├── home/                 # Home page components
+├── App.css                   # Main app styles
+├── App.tsx                   # App entry file
+├── index.css                 # Global CSS
+├── index.html                # HTML template
+├── main.tsx                  # Main entry point
+├── vite-env.d.ts             # TypeScript Vite configuration
+├── .env                      # Environment variables
+├── .eslintrc.cjs             # ESLint configuration
+├── netlify.toml              # Netlify deployment configuration
+├── package-lock.json         # NPM package lock file
+├── package.json              # NPM configuration file
+├── postcss.config.js         # PostCSS configuration
+└── README.md                 # Project README
+
 ```  
+
+---
+
 
 ---
 
@@ -125,13 +182,14 @@ Contributions are welcome! To contribute:
 ---
 
 ## 📜 License  
+This project is licensed under the [MIT License](LICENSE).  
 
 ---
 
 ## 💬 Connect  
 Have questions or suggestions? Feel free to reach out!  
 - **GitHub**: [nikobuddy](http://github.com/nikobuddy)  
-- **Email**: nisargalokhande@gmail.com  
+- **Email**: your-email@example.com  
 
 ---
 
