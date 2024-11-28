@@ -1,11 +1,9 @@
-import { Menu } from 'antd';
 import {
   Bot,
   CalendarDays,
   CheckSquare,
   FileCode2,
   Folder,
-  GitBranch,
   Home,
   MessageCircle,
   Share2,
@@ -13,8 +11,10 @@ import {
   Timer,
   Video,
 } from 'lucide-react';
-import React from 'react';
+
 import { Link } from 'react-router-dom';
+import { Menu } from 'antd';
+import React from 'react';
 
 type membersSidebarContentProps = {
   expanded: boolean;
@@ -60,12 +60,12 @@ const MembersSidebarContent: React.FC<membersSidebarContentProps> = ({ expanded 
       </Menu.Item>
 
       {/* GitHub Versions */}
-      <Menu.Item key="versions" className="bg-[#292b38] text-white hover:bg-gray-700">
+      {/*<Menu.Item key="versions" className="bg-[#292b38] text-white hover:bg-gray-700">
         <Link to="/versions" className="flex items-center">
           <GitBranch className="text-sm mr-2" />
           {expanded && <span className="ml-2">GitHub Versions</span>}
         </Link>
-      </Menu.Item>
+      </Menu.Item>*/}
 
       {/* Calendar */}
       <Menu.Item key="calendar" className="bg-[#292b38] text-white hover:bg-gray-700">

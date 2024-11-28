@@ -189,7 +189,7 @@ This project is licensed under the [MIT License](LICENSE).
 ## 💬 Connect  
 Have questions or suggestions? Feel free to reach out!  
 - **GitHub**: [nikobuddy](http://github.com/nikobuddy)  
-- **Email**: your-email@example.com  
+- **Email**: nisargalokhande@gmail.com  
 
 ---
 
