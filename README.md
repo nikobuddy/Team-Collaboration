@@ -5,6 +5,14 @@ A powerful and user-friendly platform to streamline team collaboration with task
 
 ![Team-Collaboration Banner](https://codemore.site/bikebuilders.png)  
 
+## Team Members 🚀
+
+| **Name**           | **GitHub**                                                             | **Role**          |
+|---------------------|------------------------------------------------------------------------|-------------------|
+| Gayatri Wadge       | [@Gayatriwadge02](https://github.com/Gayatriwadge02)                  | UI/UX Designer      |
+| Rushikesh Landge    | [@LandgeRushikesh](https://github.com/LandgeRushikesh)                | Developer         |
+| Dhanashri Sonawane  | [@DhanashriSonawane25](https://github.com/DhanashriSonawane25)        |  Developer   |
+
 
 ## ⚙️ Getting Started  
 
