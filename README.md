@@ -3,7 +3,7 @@
 
 A powerful and user-friendly platform to streamline team collaboration with task management, resource sharing, version control, and real-time updates.  
 
-![Team-Collaboration Banner](https://via.placeholder.com/1000x200.png?text=Team-Collaboration+Platform)  
+![Team-Collaboration Banner](https://codemore.site/bikebuilders.png)  
 
 
 ## ⚙️ Getting Started  
@@ -156,9 +156,9 @@ TEAM-COLLABORATION/
 
 ## 📸 Screenshots  
 ### Dashboard  
-![Dashboard Screenshot](https://via.placeholder.com/800x400.png?text=Dashboard)  
+![Dashboard Screenshot](https://codemore.site/admin.png)  
 ### Task Management  
-![Task Management Screenshot](https://via.placeholder.com/800x400.png?text=Task+Management)  
+![Task Management Screenshot](https://codemore.site/dashboard.png)  
 
 ---
 
