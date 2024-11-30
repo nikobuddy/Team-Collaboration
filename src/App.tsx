@@ -71,7 +71,7 @@ const App = () => {
 
           {/* Admin Dashboard */}
           <Route element={<AdminProtectedDashboardLayout />}>
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/projects" element={<ProjectAdminPage />} />
             <Route path="/admin/tasks" element={<AdminTasks />} />
             <Route path="/admin/resources" element={<AdminResources />} />
