@@ -5,6 +5,17 @@ A powerful and user-friendly platform to streamline team collaboration with task
 
 ![Team-Collaboration Banner](https://codemore.site/bikebuilders.png)  
 
+## 🔐 Login Credentials
+
+You can use the following credentials to log in for testing purposes:
+
+| **Email ID**           | **Password**        |
+|-------------------------|---------------------|
+| `test@demo.mail`       | `test@demo.mail`   |
+
+> ⚠️ **Note:** These credentials are for demo purposes only. Please do not use sensitive data in this test environment.
+
+
 ## Team Members 🚀
 
 | **Name**           | **GitHub**                                                             | **Role**          |
