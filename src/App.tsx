@@ -31,6 +31,7 @@ import TaskPage from './pages/components/members/Pages/tasks';
 import ErrorPage from './pages/error/error_page';
 import HomePage from './pages/home/page/home_page';
 
+
 const App = () => {
   const { isAdmin } = useAuth(); // Dynamically determine if user is an admin
 
